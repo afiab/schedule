@@ -29,7 +29,9 @@ def draw():
 
     for num in range(len(courses)):
         fill(150, 150, 150)
-        rect(courses[num][0],courses[num][1],100,20)
+        stroke(0,0)
+        rect(courses[num][0],courses[num][1],95,25)
+    stroke(0)
 
     #make the grid
     Times = ["7AM","8AM","9AM","10AM","11AM","12PM","1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM", "9PM", "10PM", "11PM", "12AM"]
@@ -80,5 +82,6 @@ def draw():
     text("Blue: "+str(currBlue),825,220)
 
     if mousePressed:
-        rect(mouseX, mouseY, 100, 20)
-        courses.append([mouseX,mouseY])
+        if mouseX<705:
+            rect(mouseX, mouseY, 100, 20)
+            courses.append([mouseX,mouseY])
