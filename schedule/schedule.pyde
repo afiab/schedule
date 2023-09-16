@@ -80,9 +80,26 @@ def draw():
         if mouseX<690 and mouseX>70:
             if mouseY<550 and mouseY>30:
                 rect(mouseX, mouseY, 100, 20)
-                courses.append([mouseX,mouseY,currHours*30])
-        elif mouseX > 700:
-            if currHours ==8:
-                currHours=1
-            else:
-                currHours+=1
+                courses.append([mouseX,mouseY,currHours*30+int(currMins/2)])
+        elif mouseX > 920 and mouseX<945:
+            if mouseY>50 and mouseY<75:
+                if currHours ==8:
+                    currHours=1
+                else:
+                    currHours+=1
+            elif mouseY>80 and mouseY<105:
+                if currMins ==59:
+                    currMins=0
+                else:
+                    currMins+=1
+        elif mouseX>800 and mouseX<825:
+            if mouseY>50 and mouseY<75:
+                if currHours ==1:
+                    currHours=8
+                else:
+                    currHours-=1
+            elif mouseY>80 and mouseY<105:
+                if currMins ==0:
+                    currMins=59
+                else:
+                    currMins-=1
