@@ -4,7 +4,7 @@ courses = []
 currDay = 0 #index of current day
 currHours = 1 #how many hours the course lasts
 currMins = 0 #how many additional minutes the course lasts
-    
+currCol = 0 #color index
 
 def setup():
     size(1000, 600)
@@ -23,7 +23,7 @@ def setup():
 def draw():
     background(255)
     #global vars
-    global currDay, currHours, currMins
+    global currDay, currHours, currMins, currCol
     a = 250
 
     for num in range(len(courses)):
@@ -63,7 +63,9 @@ def draw():
     fill(255,0)
     rect(775, 30, 200, 540)
     
-    for newRect in range(2):
+    Colors = [ ['red',[255,0,0]],['green',[0,255,255]],['blue',[0,255,255]]]
+    
+    for newRect in range(3):
         fill(200,150,150)#box
         rect(800, 50+(newRect*30), 25, 25)
         fill(0)#minus sign
@@ -75,6 +77,7 @@ def draw():
         rect(930, 55+(newRect*30), 5, 15)
     text("Hours: "+str(currHours),825,70)
     text("Mins: "+str(currMins),825,100)
+    text("Color: "+str(colors[currCol]),825,100)
     
     text("Click and drag\nthe mouse on \nthe screen to fill\nin time slots", 800, 200)
 
@@ -82,7 +85,7 @@ def draw():
         if mouseX<690 and mouseX>70:
             if mouseY<550 and mouseY>30:
                 rect(mouseX, mouseY, 100, 20)
-                courses.append([mouseX,mouseY,currHours*30+int(currMins/2)])
+                courses.append([mouseX,mouseY,currHours*30+int(currMins/2)],currCol)
         elif mouseX > 920 and mouseX<945:
             if mouseY>50 and mouseY<75:
                 if currHours ==8:
@@ -105,3 +108,8 @@ def draw():
                     currMins=59
                 else:
                     currMins-=1
+            elif mouseY>110 and mouseY<135:
+                if currCol == 0:
+                    currCol = len(Colors)-1
+                else:
+                    currCol -=1
