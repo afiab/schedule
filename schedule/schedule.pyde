@@ -65,16 +65,16 @@ def draw():
     rect(775, 30, 200, 540)
     
     for newRect in range(6):
-        fill(200,150,150)#box
-        rect(800, 50+(newRect*30), 25, 25)
-        fill(0)#minus sign
-        rect(805, 60+(newRect*30), 15, 5)
-        fill(150,200,150)#box
-        rect(920, 50+(newRect*30), 25, 25)
-        fill(0)#plus sign
-        rect(925, 60+(newRect*30), 15, 5)
-        rect(930, 55+(newRect*30), 5, 15)
-    text("Day: "+Days[currDay],825,70)
+        if newRect >0:
+            fill(200,150,150)#box
+            rect(800, 50+(newRect*30), 25, 25)
+            fill(0)#minus sign
+            rect(805, 60+(newRect*30), 15, 5)
+            fill(150,200,150)#box
+            rect(920, 50+(newRect*30), 25, 25)
+            fill(0)#plus sign
+            rect(925, 60+(newRect*30), 15, 5)
+            rect(930, 55+(newRect*30), 5, 15)
     text("Hours: "+str(currHours),825,100)
     text("Mins: "+str(currMins),825,130)
     text("Red: "+str(currRed),825,160)
@@ -82,6 +82,7 @@ def draw():
     text("Blue: "+str(currBlue),825,220)
 
     if mousePressed:
-        if mouseX<705:
-            rect(mouseX, mouseY, 100, 20)
-            courses.append([mouseX,mouseY])
+        if mouseX<690 and mouseX>70:
+            if mouseY<550 and mouseY>30:
+                rect(mouseX, mouseY, 100, 20)
+                courses.append([mouseX,mouseY])
