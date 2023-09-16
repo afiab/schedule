@@ -1,6 +1,10 @@
 import random
 
 courses = []
+currDay = 0 #index of current day
+currHours = 1 #how many hours the course lasts
+currMins = 0 #how many additional minutes the course lasts
+    
 
 def setup():
     size(1000, 600)
@@ -19,18 +23,13 @@ def setup():
 def draw():
     background(255)
     #global vars
-    global currDay, currHours, currMins, currRed, currGreen, currBlue
-    currDay = 0 #index of current day
-    currHours = 0 #how many hours the course lasts
-    currMins = 0 #how many additional minutes the course lasts
-    currRed = 0 #current r value
-    currGreen = 0 #current g value
-    currBlue = 0 #current b value
+    global currDay, currHours, currMins
+    a = 250
 
     for num in range(len(courses)):
-        fill(150, 150, 150)
+        fill(150, 150, 150,a)
         stroke(0,0)
-        rect(courses[num][0],courses[num][1],95,25)
+        rect(courses[num][0],courses[num][1],95,courses[num][2])
     stroke(0)
 
     #make the grid
@@ -64,25 +63,26 @@ def draw():
     fill(255,0)
     rect(775, 30, 200, 540)
     
-    for newRect in range(6):
-        if newRect >0:
-            fill(200,150,150)#box
-            rect(800, 50+(newRect*30), 25, 25)
-            fill(0)#minus sign
-            rect(805, 60+(newRect*30), 15, 5)
-            fill(150,200,150)#box
-            rect(920, 50+(newRect*30), 25, 25)
-            fill(0)#plus sign
-            rect(925, 60+(newRect*30), 15, 5)
-            rect(930, 55+(newRect*30), 5, 15)
-    text("Hours: "+str(currHours),825,100)
-    text("Mins: "+str(currMins),825,130)
-    text("Red: "+str(currRed),825,160)
-    text("Green: "+str(currGreen),825,190)
-    text("Blue: "+str(currBlue),825,220)
+    for newRect in range(2):
+        fill(200,150,150)#box
+        rect(800, 50+(newRect*30), 25, 25)
+        fill(0)#minus sign
+        rect(805, 60+(newRect*30), 15, 5)
+        fill(150,200,150)#box
+        rect(920, 50+(newRect*30), 25, 25)
+        fill(0)#plus sign
+        rect(925, 60+(newRect*30), 15, 5)
+        rect(930, 55+(newRect*30), 5, 15)
+    text("Hours: "+str(currHours),825,70)
+    text("Mins: "+str(currMins),825,100)
 
     if mousePressed:
         if mouseX<690 and mouseX>70:
             if mouseY<550 and mouseY>30:
                 rect(mouseX, mouseY, 100, 20)
-                courses.append([mouseX,mouseY])
+                courses.append([mouseX,mouseY,currHours*30])
+        elif mouseX > 700:
+            if currHours ==8:
+                currHours=1
+            else:
+                currHours+=1
