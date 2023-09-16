@@ -13,4 +13,15 @@ def draw():
             rect(xCoor, yCoor, 100, 30) #x,y,w,h
             xCoor += 100
         yCoor+=30
+    #adding times on the left side:
+    yCoor = 50
+    for time in Times:
+        text(time, 20, yCoor)
+        yCoor += 30
+    #adding weekdays on the top
+    Days = ["SUN","MON","TUE","WED","THUR","FRI","SAT"]
+    xCoor = 90
+    for day in Days:
+        text(day, xCoor, 20)
+        xCoor+=100
     #grid done
