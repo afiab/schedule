@@ -1,7 +1,15 @@
+import random
 def setup():
     size(1000, 600)
     stroke(0)
     background(192, 64, 0)
+
+class courseBlock(object):
+    #init x y , class time, course name, r g b colors
+    def __init__(self, xCoor, yCoor, duration, title, r=random.randint(0,255), g=random.randint(0,255), b=random.randint(0,255)):
+        self.fill(r, g, b)
+        self.rect(xCoor, yCoor, 100, h)
+        self.text(title)
 
 def draw():
     #make the grid
@@ -14,7 +22,7 @@ def draw():
             xCoor += 100
         yCoor+=30
     #adding times on the left side:
-    yCoor = 50
+    yCoor = 60
     for time in Times:
         text(time, 20, yCoor)
         yCoor += 30
