@@ -75,6 +75,8 @@ def draw():
         rect(930, 55+(newRect*30), 5, 15)
     text("Hours: "+str(currHours),825,70)
     text("Mins: "+str(currMins),825,100)
+    
+    text("Click and drag\nthe mouse on \nthe screen to fill\nin time slots", 800, 200)
 
     if mousePressed:
         if mouseX<690 and mouseX>70:
